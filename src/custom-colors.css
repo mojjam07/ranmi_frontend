@@ -1,0 +1,55 @@
+:root {
+  --bs-primary: #ff7744;
+  --bs-primary-rgb: 255, 119, 68;
+  --bs-secondary: #2a4365;
+  --bs-secondary-rgb: 42, 67, 101;
+  --bs-accent: #4299e1;
+  --bs-accent-rgb: 66, 153, 225;
+  --bs-light: #f7fafc;
+  --bs-dark: #1a202c;
+}
+
+.btn-primary {
+  --bs-btn-bg: #ff7744;
+  --bs-btn-border-color: #ff7744;
+  --bs-btn-hover-bg: #ff4d00;
+  --bs-btn-hover-border-color: #ff4d00;
+  --bs-btn-active-bg: #e64700;
+  --bs-btn-active-border-color: #e64700;
+}
+
+.btn-secondary {
+  --bs-btn-bg: var(--bs-secondary);
+  --bs-btn-border-color: var(--bs-secondary);
+  --bs-btn-hover-bg: #1e2b42;
+  --bs-btn-hover-border-color: #1e2b42;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #ff7744;
+  --bs-btn-border-color: #ff7744;
+  --bs-btn-hover-bg: #ff4d00;
+  --bs-btn-hover-border-color: #ff4d00;
+}
+
+.navbar {
+  --bs-navbar-brand-color: var(--bs-primary);
+  background-color: var(--bs-light) !important;
+}
+
+.card {
+  border-color: var(--bs-accent);
+}
+
+.footer {
+  background-color: var(--bs-dark) !important;
+  color: white !important;
+}
+
+.text-secondary {
+  color: var(--bs-secondary) !important;
+}
+
+.bg-accent {
+  background-color: var(--bs-accent) !important;
+}
