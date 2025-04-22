@@ -1,9 +1,26 @@
-#nav-links {
+.nav-link {
   font-weight: bold;
   font-size: 16px;
   color: #ff7700;
 }
 
-#nav-links:hover {
-  color: #ff4d00;
+.login {
+  color: #ff7700;
+  border: 1px solid #ff7700;
+}
+
+.login:hover {
+  background-color: #ff7700;
+  border: 1px solid #ff7700;
+}
+
+.signup {
+  background-color: #ff7700;
+  border: 1px solid #ff7700;
+}
+
+.signup:hover {
+  color: #ff7700;
+  background-color: #fff;
+  border: 1px solid #ff7700;
 }

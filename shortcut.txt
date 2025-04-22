@@ -1,0 +1,1 @@
+To run the backend api: node backend/server.cjs
