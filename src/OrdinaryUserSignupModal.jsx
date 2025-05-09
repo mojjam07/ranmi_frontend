@@ -41,7 +41,7 @@ const OrdinaryUserSignupModal = ({ show, onHide, onShowSignup }) => {
   return (
     <Offcanvas show={show} onHide={onHide} placement="end">
       <Offcanvas.Header closeButton>
-        <Offcanvas.Title>Sign Up as Ordinary User</Offcanvas.Title>
+        <Offcanvas.Title>Sign Up as a User</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
         <form onSubmit={handleSubmit}>
@@ -91,7 +91,7 @@ const OrdinaryUserSignupModal = ({ show, onHide, onShowSignup }) => {
           </div>
           {error && <div className="text-danger mb-3">{error}</div>}
           <button type="submit" className="btn btn-primary w-100 submit">
-            Sign Up as Ordinary User
+            Sign Up as a User
           </button>
         </form>
         <div className="mt-3 text-center">

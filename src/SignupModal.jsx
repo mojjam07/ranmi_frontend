@@ -154,7 +154,7 @@ const SignupModal = ({ show, onHide, onShowSignup }) => {
               onClick={handleOpenOrdinaryModal}
               style={{ color: "#ff4d00" }}
             >
-              Sign up as an ordinary user
+              Sign up as a User
             </button>
           </div>
         </Offcanvas.Body>
