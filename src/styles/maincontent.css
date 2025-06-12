@@ -21,3 +21,9 @@
   color: #fff;
   border: 1px solid #ff7700;
 }
+
+.btn-get-order:active {
+  background-color: #ff7700;
+  color: #fff;
+  border: 1px solid #ff7700;
+}

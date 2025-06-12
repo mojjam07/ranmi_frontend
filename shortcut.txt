@@ -1,1 +1,2 @@
 To run the backend api: node backend/server.cjs
+To run migration: node backend/migration.cjs

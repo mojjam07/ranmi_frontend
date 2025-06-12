@@ -9,6 +9,7 @@ const SignupModal = ({ show, onHide, onShowSignup }) => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [service, setService] = useState("");
+  const [vehicle, setVehicle] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(null);
@@ -59,7 +60,7 @@ const SignupModal = ({ show, onHide, onShowSignup }) => {
     <>
       <Offcanvas show={show} onHide={onHide} placement="end">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Partner Signup</Offcanvas.Title>
+          <Offcanvas.Title>Signup as a Partner</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <form onSubmit={handleSubmit}>
@@ -115,9 +116,23 @@ const SignupModal = ({ show, onHide, onShowSignup }) => {
                 onChange={(e) => setService(e.target.value)}
               >
                 <option value="">Select a Service</option>
-                <option value="taxi">Taxi/Delivery Service</option>
+                <option value="taxi">Transport Delivery Service</option>
                 <option value="laundry">Laundry Service</option>
                 <option value="restaurant">Restaurant Service</option>
+              </select>
+            </div>
+            <div className="mb-3">
+              <select
+                name="service"
+                required
+                value={vehicle}
+                onChange={(e) => setVehicle(e.target.value)}
+              >
+                <option value="">Your Vehicle Type</option>
+                <option value="bike">Bike/Bicycle</option>
+                <option value="cab">Cab/Tax</option>
+                <option value="bus">Bus/SUVs</option>
+                <option value="truck">Truck</option>
               </select>
             </div>
             <div className="mb-3">

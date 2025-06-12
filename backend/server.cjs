@@ -64,6 +64,33 @@ app.get("/api/reviews", async (req, res) => {
   }
 });
 
+app.get("/api/orders", async (req, res) => {
+  try {
+    const result = await pool.query(
+      "SELECT id, service_name, details, user_id, created_at FROM orders ORDER BY created_at DESC"
+    );
+    res.set("Cache-Control", "no-store");
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error fetching orders:", error.stack);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.post("/api/orders", async (req, res) => {
+  const { service_name, details, user_id } = req.body;
+  try {
+    const result = await pool.query(
+      "INSERT INTO orders (service_name, details, user_id) VALUES ($1, $2, $3) RETURNING *",
+      [service_name, details, user_id]
+    );
+    res.json({ message: "Order placed successfully", order: result.rows[0] });
+  } catch (error) {
+    console.error("Error placing order:", error.stack);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Backend API server listening at http://localhost:${port}`);
 });
