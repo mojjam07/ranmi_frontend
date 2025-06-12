@@ -4,6 +4,7 @@ import logistic from "./assets/logistic.jpg";
 import laundry from "./assets/laundry.jpg";
 import restaurant from "./assets/restaurant.jpg";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import SignupModal from "./SignupModal";
 
 const services = [
   {
@@ -83,9 +84,42 @@ const OrderFormModal = ({ show, onHide, service }) => {
   );
 };
 
+const AvailableOrdersModal = ({ show, onHide, orders }) => {
+  return (
+    <Offcanvas show={show} onHide={onHide} placement="end">
+      <Offcanvas.Header closeButton>
+        <Offcanvas.Title>Available Orders</Offcanvas.Title>
+      </Offcanvas.Header>
+      <Offcanvas.Body>
+        {orders.length === 0 ? (
+          <p>No available orders at the moment.</p>
+        ) : (
+          orders.map((order) => (
+            <div className="card mb-3" key={order.id}>
+              <div className="card-body">
+                <h5 className="card-title">Order #{order.id}</h5>
+                <p className="card-text">Service: {order.serviceName}</p>
+                <p className="card-text">Details: {order.details}</p>
+              </div>
+            </div>
+          ))
+        )}
+      </Offcanvas.Body>
+    </Offcanvas>
+  );
+};
+
 const MainContent = () => {
   const [showOrderForm, setShowOrderForm] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
+  const [showAvailableOrders, setShowAvailableOrders] = useState(false);
+  const [selectedServiceForOrders, setSelectedServiceForOrders] = useState(null);
+
+  const sampleOrders = [
+    { id: 101, serviceName: "Logistic", details: "Deliver package to NY" },
+    { id: 102, serviceName: "Laundry Service", details: "Wash and fold clothes" },
+    { id: 103, serviceName: "Restaurant Treat", details: "Order dinner for 2" },
+  ];
 
   const handleOpenOrderForm = (service) => {
     setSelectedService(service);
@@ -96,6 +130,22 @@ const MainContent = () => {
     setShowOrderForm(false);
     setSelectedService(null);
   };
+
+  const handleOpenAvailableOrders = (service) => {
+    setSelectedServiceForOrders(service);
+    setShowAvailableOrders(true);
+  };
+
+  const handleCloseAvailableOrders = () => {
+    setShowAvailableOrders(false);
+    setSelectedServiceForOrders(null);
+  };
+
+  const filteredOrders = selectedServiceForOrders
+    ? sampleOrders.filter(
+        (order) => order.serviceName === selectedServiceForOrders.name
+      )
+    : [];
 
   return (
     <main className="container my-5 flex-grow-1">
@@ -119,12 +169,20 @@ const MainContent = () => {
               <div className="card-body">
                 <h5 className="card-title">{service.name}</h5>
                 <p className="card-text">{service.description}</p>
-                <button
-                  className="btn btn-primary submit"
-                  onClick={() => handleOpenOrderForm(service)}
-                >
-                  Place Order
-                </button>
+                <div className="d-flex">
+                  <button
+                    className="btn btn-primary submit"
+                    onClick={() => handleOpenOrderForm(service)}
+                  >
+                    Place Order
+                  </button>
+                  <button
+                    className="btn btn-get-order ms-auto"
+                    onClick={() => handleOpenAvailableOrders(service)}
+                  >
+                    Get Order
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -139,6 +197,11 @@ const MainContent = () => {
         show={showOrderForm}
         onHide={handleCloseOrderForm}
         service={selectedService}
+      />
+      <AvailableOrdersModal
+        show={showAvailableOrders}
+        onHide={handleCloseAvailableOrders}
+        orders={filteredOrders}
       />
     </main>
   );

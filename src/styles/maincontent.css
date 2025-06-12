@@ -1,4 +1,3 @@
-
 .submit {
   background-color: #ff7700;
   color: #fff;
@@ -8,5 +7,17 @@
 .submit:hover {
   background-color: #fff;
   color: #ff7700;
+  border: 1px solid #ff7700;
+}
+
+.btn-get-order {
+  background-color: #fff;
+  color: #ff7700;
+  border: 1px solid #ff7700;
+}
+
+.btn-get-order:hover {
+  background-color: #ff7700;
+  color: #fff;
   border: 1px solid #ff7700;
 }
